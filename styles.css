@@ -1,0 +1,95 @@
+/* Personnalisation spécifique RateIt */
+
+:root {
+    --primary-color: #dc3545;
+    --dark-color: #212529;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.text-danger {
+    color: var(--primary-color) !important;
+}
+
+.bg-danger {
+    background-color: var(--primary-color) !important;
+}
+
+.btn-danger {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+}
+
+.btn-outline-danger {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-danger:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Cartes d'items */
+.item-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    height: 100%;
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.item-image {
+    height: 250px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+}
+
+.item-card-body {
+    padding: 15px;
+}
+
+.item-title {
+    font-weight: bold;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-type {
+    font-size: 12px;
+    color: #6c757d;
+    text-transform: uppercase;
+}
+
+.item-rating {
+    color: #dc3545;
+    font-size: 14px;
+}
+
+.stars {
+    color: #ffc107;
+}
+
+/* Titres des sections */
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
