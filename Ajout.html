@@ -35,7 +35,6 @@
                         </div>
                         <div class="card-body p-4">
                             <form method="POST" action="traiter_ajout.php" enctype="multipart/form-data">
-                                <!-- Type -->
                                 <div class="mb-3">
                                     <label for="TypeObjet" class="form-label">Type *</label>
                                     <select class="form-select" id="TypeObjet" name="type" required>
@@ -46,27 +45,23 @@
                                     </select>
                                 </div>
 
-                                <!-- Titre -->
                                 <div class="mb-3">
                                     <label for="titre" class="form-label">Titre *</label>
                                     <input type="text" class="form-control" id="titre" name="titre" placeholder="Ex: Inception"
                                         required>
                                 </div>
 
-                                <!-- Date de sortie -->
                                 <div class="mb-3">
                                     <label for="dateSortie" class="form-label">Date de sortie *</label>
                                     <input type="date" class="form-control" id="dateSortie" name="date_sortie" required>
                                 </div>
 
-                                <!-- Réalisateur/Créateur -->
                                 <div class="mb-3">
                                     <label for="createur" class="form-label">Réalisateur / Créateur</label>
                                     <input type="text" class="form-control" id="createur" name="createur"
                                         placeholder="Ex: Christopher Nolan">
                                 </div>
 
-                                <!-- Genre -->
                                 <div class="mb-3">
                                     <label for="genre" class="form-label">Genre *</label>
                                     <select class="form-select" id="genre" name="genre" required>
@@ -80,20 +75,17 @@
                                     </select>
                                 </div>
 
-                                <!-- Description -->
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Description / Synopsis</label>
                                     <textarea class="form-control" id="description" name="description" rows="4"
                                         placeholder="Décrivez l'élément..."></textarea>
                                 </div>
 
-                                <!-- Image de couverture -->
                                 <div class="mb-3">
                                     <label for="affiche" class="form-label">Affiche / Image de couverture</label>
                                     <input type="file" class="form-control" id="affiche" name="affiche" accept="image/*">
                                 </div>
 
-                                <!-- Bouton Soumettre (sans le champ Note) -->
                                 <button type="submit" class="btn btn-danger w-100">Ajouter l'élément</button>
                             </form>
                         </div>
