@@ -1,3 +1,5 @@
+<?php include('./php/populaires.php'); include('./php/recemment.php');?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -44,6 +46,22 @@
                 <h2 class="mb-4 pb-2 border-bottom border-danger border-3">Récemment ajoutés</h2>
                 <div class="row" id="recently-added">
                     <!-- Contenu généré par PHP -->
+                     <?php foreach ($recemment as $film): ?>
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card movie-card h-100 shadow">
+                                <img src="<?= $film['image'] ?>" class="card-img-top" alt="<?= $film['titre'] ?>">
+                                
+                                <div class="card-body d-flex flex-column justify-content-center">
+                                    <h5 class="card-title text-center m-0 fw-bold">
+                                        <?= $film['titre'] ?>
+                                    </h5>
+                                    <div class="text-center mt-2">
+                                        <span class="badge bg-warning text-dark">★ <?= $film['note'] ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </section>
 
@@ -52,6 +70,22 @@
                 <h2 class="mb-4 pb-2 border-bottom border-danger border-3">Les plus populaires</h2>
                 <div class="row" id="most-popular">
                     <!-- Contenu généré par PHP -->
+                    <?php foreach ($populaires as $film): ?>
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card movie-card h-100 shadow">
+                                <img src="<?= $film['image'] ?>" class="card-img-top" alt="<?= $film['titre'] ?>">
+                                
+                                <div class="card-body d-flex flex-column justify-content-center">
+                                    <h5 class="card-title text-center m-0 fw-bold">
+                                        <?= $film['titre'] ?>
+                                    </h5>
+                                    <div class="text-center mt-2">
+                                        <span class="badge bg-warning text-dark">★ <?= $film['note'] ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </section>
 
