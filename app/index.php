@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 
-<body>
+<body style="display:flex; flex-direction:column; min-height:100vh;">
     
     <!-- En-tête -->
     <header class="navbar navbar-dark bg-dark shadow-sm">
@@ -26,12 +26,13 @@
     </header>
 
     <!-- Barre de recherche -->
-    <section class="bg-white py-4 shadow-sm">
-        <div id="navbar-container" class="container text-center">
+    <section class="bg-white py-4">
+        <div id="navbar-container" class="container  text-center">
             <div class="d-flex gap-3 justify-content-center align-items-center flex-wrap">
                 <div class="input-group" style="max-width: 500px;">
                     <input type="text" class="form-control" placeholder="Rechercher un film, une série ou un jeu...">
-                    <a href="html/search.html" class="btn btn-danger btn-signup">Rechercher</a>
+                    <!-- A changer pour php recherche BD SQL -->
+                    <a href="html/search.html"  class="btn btn-danger btn-signup">Rechercher</a>
                 </div>
                 <a href="html/ajout.html" id="add" class="btn btn-outline-danger">+ Ajouter</a>
             </div>
@@ -39,11 +40,11 @@
     </section>
 
     <!-- Contenu principal -->
-    <main class="py-5">
+    <main class="py-5 flex-grow-1">
         <div class="container">
             <!-- Section Récemment ajoutés -->
             <section class="mb-5">
-                <h2 class="mb-4 pb-2 border-bottom border-danger border-3">Récemment ajoutés</h2>
+                <h2 class="mb-4 pb-2 border-bottom border-danger border-3 ">Récemment ajoutés</h2>
                 <div class="row" id="recently-added">
                     <!-- Contenu généré par PHP -->
                      <?php foreach ($recemment as $film): ?>
@@ -100,7 +101,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-4 mt-5">
+    <footer class="bg-dark text-white text-center py-4 mt-auto">
         <p>&copy; 2026 RateIt. Tous droits réservés.</p>
         <p>Notez vos films, séries et jeux favoris</p>
     </footer>
