@@ -1,0 +1,45 @@
+/* Enlever le fond blanc par defaut des placeholder sur bootstrap */
+.form-floating > label::after {
+    background-color: transparent !important;
+}
+
+/* Image de fond pour les pages d'authentification et d'ajout */
+.auth-bg {
+    background-image: url('images/bg.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+}
+
+/* Overlay pour les pages avec fond */
+.page-overlay::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    pointer-events: none;
+    z-index: 0;
+    
+}
+
+/* S'assurer que les cartes sont au-dessus de l'overlay */
+.card {
+    position: relative;
+    z-index: 1;
+}
+
+/* Rendre les champs de formulaire transparents */
+.form-control,
+.form-select {
+    background-color: rgba(0,0,0,0.45) !important;
+    color: #fff !important;
+}
+
+/* Centrer les pages qui doivent avoir un overlay */
+.page-centered {
+    position: relative;
+    z-index: 1;
+}
+
