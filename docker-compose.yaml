@@ -13,7 +13,7 @@ services:
   db:
     image: mysql:latest
     environment:
-      - MYSQL_DATABASE=appinfo
+      - MYSQL_DATABASE=db
       - MYSQL_USER=php_docker
       - MYSQL_PASSWORD=password
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
