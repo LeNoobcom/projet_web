@@ -19,7 +19,7 @@
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1 text-danger fw-bold">RateIt</span>
             <div class="d-flex gap-2">
-                <a href="html/login.html" class="btn btn-outline-danger btn-login">Se connecter</a>
+                <a href="html/login.php" class="btn btn-outline-danger btn-login">Se connecter</a>
                 <a href="html/signup.html" class="btn btn-danger btn-signup">S'inscrire</a>
             </div>
         </div>

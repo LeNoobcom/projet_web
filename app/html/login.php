@@ -1,3 +1,6 @@
+<?php
+    session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -33,7 +36,12 @@
                                 </h2>
                                 <p class="text-white-50 small">Ravi de vous revoir !</p>
                             </div>
-
+                            <?php
+                                if (isset($_SESSION['erreur'])) {
+                                    echo '<p style="color:red;">' . $_SESSION['erreur'] . '</p>';
+                                    unset($_SESSION['erreur']); 
+                                }
+                            ?>
                             <form method="POST" action="../server/traiter_login.php">
                                 <div class="form-floating mb-3">
                                     <input type="email" name="email" class="form-control text-white border-secondary" 
