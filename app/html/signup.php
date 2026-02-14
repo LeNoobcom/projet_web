@@ -1,3 +1,6 @@
+<?php
+    session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -42,13 +45,24 @@
                                         style="background-color: rgba(0,0,0,0.4);"
                                         id="signupUsername" placeholder="Pseudo" required>
                                     <label for="signupUsername" class="text-white-50">Nom d'utilisateur</label>
+                                    <?php
+                                        if (isset($_SESSION['username'])) {
+                                            echo '<p style="color:red;">' . $_SESSION['username'] . '</p>';
+                                            unset($_SESSION['username']); 
+                                        }
+                                    ?>
                                 </div>
-
                                 <div class="form-floating mb-3">
                                     <input type="email" name="email" class="form-control text-white border-secondary" 
                                         style="background-color: rgba(0,0,0,0.4);"
                                         id="signupEmail" placeholder="nom@exemple.com" required>
                                     <label for="signupEmail" class="text-white-50">Adresse email</label>
+                                    <?php
+                                        if (isset($_SESSION['account'])) {
+                                            echo '<p style="color:red;">' . $_SESSION['account'] . '</p>';
+                                            unset($_SESSION['account']); 
+                                        }
+                                    ?>
                                 </div>
 
                                 <div class="row">
@@ -69,7 +83,12 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <?php
+                                    if (isset($_SESSION['confirm'])) {
+                                        echo '<p style="color:red;">' . $_SESSION['confirm'] . '</p>';
+                                        unset($_SESSION['confirm']); 
+                                    }
+                                ?>
                                 <div class="form-check mb-4 px-1 ms-3">
                                     <input class="form-check-input bg-dark border-secondary" type="checkbox" id="agreeTerms" name="terms" required>
                                     <label class="form-check-label small text-white-50" for="agreeTerms">

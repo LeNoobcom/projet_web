@@ -10,7 +10,7 @@
         die('Echec de connexion : ' . mysqli_connect_error());
     } 
 
-    $query = "SELECT titre, img, note, description FROM media ORDER BY id DESC LIMIT 3;";
+    $query = "SELECT titre, img, note, description FROM media ORDER BY note DESC LIMIT 3;";
     $result = mysqli_query($bdd, $query);
     $populaires = [];
 

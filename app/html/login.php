@@ -75,7 +75,7 @@
 
                             <div class="text-center mt-3">
                                 <p class="text-white-50 small">Pas encore membre ? 
-                                    <a href="signup.html" class="text-white fw-bold text-decoration-none border-bottom border-danger">S'inscrire</a>
+                                    <a href="signup.php" class="text-white fw-bold text-decoration-none border-bottom border-danger">S'inscrire</a>
                                 </p>
                             </div>
                             <div class="text-center mt-4">

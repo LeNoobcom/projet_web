@@ -20,7 +20,7 @@
             <span class="navbar-brand mb-0 h1 text-danger fw-bold"><a href="../index.php" class="navbar-brand mb-0 h1 text-danger fw-bold">RateIt</a></span>
             <div class="d-flex gap-2">
                 <a href="html/login.php" class="btn btn-outline-danger btn-login">Se connecter</a>
-                <a href="html/signup.html" class="btn btn-danger btn-signup">S'inscrire</a>
+                <a href="html/signup.php" class="btn btn-danger btn-signup">S'inscrire</a>
             </div>
         </div>
     </header>
@@ -50,7 +50,7 @@
                      <?php foreach ($recemment as $film): ?>
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="card movie-card h-100 shadow">
-                                <img src="<?= $film['image'] ?>" class="card-img-top" alt="<?= $film['titre'] ?>">
+                                <img src="<?= $film['img'] ?>" class="card-img-top" alt="<?= $film['titre'] ?>">
                                 
                                 <div class="card-body d-flex flex-column justify-content-center">
                                     <h5 class="card-title text-center m-0 fw-bold">
