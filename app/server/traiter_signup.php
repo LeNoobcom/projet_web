@@ -49,7 +49,8 @@
         }
         $sql = "INSERT INTO user (username, email, password) VALUES ('$username', '$signupEmail', '$signupPassword')";
         mysqli_query($bdd, $sql);
-        header('Location: ../../index.php');   
+        $_SESSION['valide'] = "Compte créé, veuillez vous connecter";
+        header('Location: ../html/login.php');   
     }
     mysqli_close($bdd);
 ?>

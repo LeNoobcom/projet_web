@@ -16,6 +16,7 @@
         
         $email = $_POST['email'];
         $password = $_POST['password']; 
+        $token = $_POST['token']; 
 
         if (!empty($email) && !empty($password)) {
             $query = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
@@ -23,8 +24,15 @@
             $user_data = mysqli_fetch_assoc($result);
 
             if ($user_data && $email === $user_data['email'] && $password === $user_data['password']) {
-                header('Location: ../index.php');
-                exit();
+                if ($token === $_SESSION['token']){
+                    $_SESSION['username'] = $user_data['username'];
+                    header('Location: ../index.php');
+                    exit();
+                }else {
+                    $_SESSION['erreur'] = "Mauvais identifiants";
+                    header('Location: ../html/login.php'); 
+                    exit();
+                }
             } else {
                 $_SESSION['erreur'] = "Mauvais identifiants";
                 header('Location: ../html/login.php'); 

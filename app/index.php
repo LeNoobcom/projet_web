@@ -1,4 +1,8 @@
-<?php include('./php/populaires.php'); include('./php/recemment.php');?>
+<?php 
+    session_start();
+    include('./php/populaires.php'); 
+    include('./php/recemment.php');
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,9 +22,15 @@
     <header class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1 text-danger fw-bold"><a href="../index.php" class="navbar-brand mb-0 h1 text-danger fw-bold">RateIt</a></span>
-            <div class="d-flex gap-2">
-                <a href="html/login.php" class="btn btn-outline-danger btn-login">Se connecter</a>
-                <a href="html/signup.php" class="btn btn-danger btn-signup">S'inscrire</a>
+            <div class="d-flex gap-2 align-items-center">
+                <?php 
+                    if (isset($_SESSION['username'])){
+                        echo '<span style="color: white; margin-right: 10px;">Bonjour, <strong>' . htmlspecialchars($_SESSION['username']) . '</strong></span><a href="./server/traiter_logout.php" class="btn btn-sm btn-outline-light">Déconnexion</a>';
+                    }
+                    else{
+                        echo "<a href='html/login.php' class='btn btn-outline-danger btn-login'>Se connecter</a> <a href='html/signup.php' class='btn btn-danger btn-signup'>S'inscrire</a>";
+                    }
+                ?>
             </div>
         </div>
     </header>

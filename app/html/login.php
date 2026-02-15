@@ -1,5 +1,9 @@
 <?php
+    session_set_cookie_params(0);
     session_start(); 
+    if (empty($_SESSION['token'])) {
+        $_SESSION['token'] = bin2hex(random_bytes(32));
+    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,9 +24,44 @@
             <a href="../index.php" class="navbar-brand mb-0 h1 text-danger fw-bold">RateIt</a>
         </div>
     </header>
+    <?php
+        if (isset($_SESSION['valide'])) {
+                echo '<div style="
+                    position: absolute; 
+                    top: 20px; 
+                    right: 20px; 
+                    background-color: #1e293b; /* Bleu nuit très sombre */
+                    color: #4ade80;           /* Vert menthe doux */
+                    padding: 16px 24px;
+                    border-radius: 12px;
+                    border: 1px solid rgba(74, 222, 128, 0.2); /* Bordure verte très discrète */
+                    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+                    font-family: sans-serif;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    z-index: 9999;
+                    animation: slideIn 0.5s ease-out;
+                ">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    
+                    <span style="font-weight: 500;">Compte créé avec succès !</span>
+                </div>
 
+                <style>
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                </style>' . $_SESSION['valide'] . '</p>';
+            unset($_SESSION['valide']); 
+        }
+    ?>
     <!-- Contenu principal -->
-    <main class="py-5 d-flex align-items-center justify-content-center flex-grow-1" style="margin-top:3em;">
+    <main class="py-5 d-flex align-items-center justify-content-center flex-grow-1 relative" style="margin-top:3em;">
+        
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
@@ -35,15 +74,16 @@
                                     RATE<span class="text-white">IT</span>
                                 </h2>
                                 <p class="text-white-50 small">Ravi de vous revoir !</p>
+                                <?php
+                                    if (isset($_SESSION['erreur'])) {
+                                        echo '<p style="color:red;">' . $_SESSION['erreur'] . '</p>';
+                                        unset($_SESSION['erreur']); 
+                                    }
+                                ?>
                             </div>
-                            <?php
-                                if (isset($_SESSION['erreur'])) {
-                                    echo '<p style="color:red;">' . $_SESSION['erreur'] . '</p>';
-                                    unset($_SESSION['erreur']); 
-                                }
-                            ?>
                             <form method="POST" action="../server/traiter_login.php">
                                 <div class="form-floating mb-3">
+                                    <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
                                     <input type="email" name="email" class="form-control text-white border-secondary" 
                                         style="background-color: rgba(0,0,0,0.5);"
                                         id="loginEmail" placeholder="nom@exemple.com" required>
