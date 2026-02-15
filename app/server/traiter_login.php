@@ -18,7 +18,7 @@
         $password = $_POST['password']; 
 
         if (!empty($email) && !empty($password)) {
-            $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+            $query = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
             $result = mysqli_query($bdd, $query);
             $user_data = mysqli_fetch_assoc($result);
 

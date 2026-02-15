@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db:3306
--- Généré le : sam. 14 fév. 2026 à 14:42
--- Version du serveur : 9.6.0
+-- Généré le : dim. 15 fév. 2026 à 16:07
+-- Version du serveur : 9.5.0
 -- Version de PHP : 8.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -29,36 +29,55 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `media` (
   `id` int NOT NULL,
-  `titre` varchar(20) NOT NULL,
-  `img` varchar(100) NOT NULL,
-  `note` double NOT NULL,
-  `description` longtext NOT NULL
+  `type` varchar(10) NOT NULL,
+  `titre` varchar(30) NOT NULL,
+  `date_sortie` date NOT NULL,
+  `createur` varchar(30) DEFAULT NULL,
+  `genre` varchar(20) NOT NULL,
+  `img` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'noposter.jpg',
+  `description` longtext,
+  `dateajout` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `media`
 --
 
-INSERT INTO `media` (`id`, `titre`, `img`, `note`, `description`) VALUES
-(1, 'Oppenheimer', 'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=500&auto=format&fit=crop', 4.8, 'Un film sur la création de la bombe atomique.'),
-(2, 'The Last of Us', 'https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=500&auto=format&fit=crop', 4.9, 'Une épopée post-apocalyptique basée sur le jeu vidéo.'),
-(3, 'Dune: Part Two', 'https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=500&auto=format&fit=crop', 4.7, 'La suite de la lutte pour le contrôle de la planète Arrakis.'),
-(4, 'Joker', 'https://images.unsplash.com/photo-1531259683007-016a7b628fc3?q=80&w=500&auto=format&fit=crop', 4.5, 'L\'origine story d\'un des plus grands vilains.'),
-(5, 'Spider-Man', 'https://images.unsplash.com/photo-1635805737707-575885ab0820?q=80&w=500&auto=format&fit=crop', 4.9, 'Les aventures de l\'homme-araignée à New York.'),
-(6, 'Interstellar', 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=500&auto=format&fit=crop', 4.7, 'Un voyage épique à travers l\'espace et le temps.');
+INSERT INTO `media` (`id`, `type`, `titre`, `date_sortie`, `createur`, `genre`, `img`, `description`, `dateajout`) VALUES
+(5, 'Film', 'Spider-Man: Far From Home', '2019-07-03', 'Jon Watts', 'Action', 'spiderman_20260215_155531.png', '', '2026-02-15 15:55:31');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Structure de la table `note`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `note` (
+  `idmedia` int NOT NULL,
+  `iduser` int NOT NULL,
+  `note` int NOT NULL,
+  `commentaire` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int NOT NULL,
   `username` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(30) NOT NULL,
-  `id` int NOT NULL
+  `password` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `email`, `password`) VALUES
+(1, 'Senyu', 'y.bahammou05@gmail.com', 'Test');
 
 --
 -- Index pour les tables déchargées
@@ -68,13 +87,22 @@ CREATE TABLE `users` (
 -- Index pour la table `media`
 --
 ALTER TABLE `media`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `creation_media_unique` (`type`,`titre`,`date_sortie`,`genre`);
 
 --
--- Index pour la table `users`
+-- Index pour la table `note`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `note`
+  ADD KEY `cleetrangeremedia` (`idmedia`),
+  ADD KEY `cleetrangereuser` (`iduser`);
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `creation_user_unique` (`email`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -84,13 +112,24 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT pour la table `user`
 --
-ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+ALTER TABLE `user`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `note`
+--
+ALTER TABLE `note`
+  ADD CONSTRAINT `cleetrangeremedia` FOREIGN KEY (`idmedia`) REFERENCES `media` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `cleetrangereuser` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

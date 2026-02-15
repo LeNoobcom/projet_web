@@ -1,20 +1,22 @@
 <?php
-    $host = "db"; 
-    $user = "php_docker";
-    $pass = "password";
-    $base = "db";
+    // A revoir
 
-    $bdd = @mysqli_connect($host, $user, $pass, $base);
+    // $host = "db"; 
+    // $user = "php_docker";
+    // $pass = "password";
+    // $base = "db";
 
-    if (!$bdd) {
-        die('Echec de connexion : ' . mysqli_connect_error());
-    } 
+    // $bdd = @mysqli_connect($host, $user, $pass, $base);
 
-    $query = "SELECT titre, img, note, description FROM media ORDER BY note DESC LIMIT 3;";
-    $result = mysqli_query($bdd, $query);
-    $populaires = [];
+    // if (!$bdd) {
+    //     die('Echec de connexion : ' . mysqli_connect_error());
+    // } 
 
-    while ($row = mysqli_fetch_assoc($result)) {
-        $populaires[] = $row;
-    }
+    // $query = "SELECT titre, img, description FROM media ORDER BY note DESC LIMIT 3;";
+    // $result = mysqli_query($bdd, $query);
+    // $populaires = [];
+
+    // while ($row = mysqli_fetch_assoc($result)) {
+    //     $populaires[] = $row;
+    // }
 ?>

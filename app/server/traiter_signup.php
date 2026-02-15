@@ -20,10 +20,10 @@
         $signupPasswordConfirm = $_POST['password_confirm']; 
 
         if (!empty($username) && !empty($signupEmail) && !empty($signupPassword) && !empty($signupPasswordConfirm)) {
-            $query = "SELECT * FROM users WHERE username = '$username'";
+            $query = "SELECT * FROM user WHERE username = '$username'";
             $result = mysqli_query($bdd, $query);
             if (mysqli_num_rows($result) === 0) {
-                $query = "SELECT * FROM users WHERE email = '$signupEmail'";
+                $query = "SELECT * FROM user WHERE email = '$signupEmail'";
                 $result = mysqli_query($bdd, $query);
                 if (mysqli_num_rows($result) === 0) {
                     if ($signupPassword === $signupPasswordConfirm) {
@@ -47,7 +47,7 @@
                 exit();
             }
         }
-        $sql = "INSERT INTO users (username, email, password, id) VALUES ('$username', '$signupEmail', '$signupPassword', null)";
+        $sql = "INSERT INTO user (username, email, password) VALUES ('$username', '$signupEmail', '$signupPassword')";
         mysqli_query($bdd, $sql);
         header('Location: ../../index.php');   
     }

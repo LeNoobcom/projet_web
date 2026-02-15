@@ -1,3 +1,6 @@
+<?php
+    session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -37,7 +40,7 @@
                                 <p class="text-white-50 small">Enrichissez la base de données RateIt</p>
                             </div>
 
-                            <form method="POST" action="traiter_ajout.php" enctype="multipart/form-data">
+                            <form method="POST" action="../server/traiter_ajout.php" enctype="multipart/form-data">
                                 
                                 <div class="form-floating mb-3">
                                     <select class="form-select text-white border-secondary" id="TypeObjet" name="type" required

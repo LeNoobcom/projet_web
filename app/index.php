@@ -34,7 +34,7 @@
                     <!-- A changer pour php recherche BD SQL -->
                     <a href="html/search.html"  class="btn btn-danger btn-signup">Rechercher</a>
                 </div>
-                <a href="html/ajout.html" id="add" class="btn btn-outline-danger">+ Ajouter</a>
+                <a href="html/ajout.php" id="add" class="btn btn-outline-danger">+ Ajouter</a>
             </div>
         </div>
     </section>
@@ -50,14 +50,14 @@
                      <?php foreach ($recemment as $film): ?>
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="card movie-card h-100 shadow">
-                                <img src="<?= $film['img'] ?>" class="card-img-top" alt="<?= $film['titre'] ?>">
+                                <img src="<?= '../css/images/' . $film['img'] ?>" class="card-img-top" alt="<?= $film['titre'] ?>">
                                 
                                 <div class="card-body d-flex flex-column justify-content-center">
                                     <h5 class="card-title text-center m-0 fw-bold">
                                         <?= $film['titre'] ?>
                                     </h5>
                                     <div class="text-center mt-2">
-                                        <span class="badge bg-warning text-dark">★ <?= $film['note'] ?></span>
+                                        <span class="badge bg-warning text-dark">★  <?= "A revoir" ?></span>
                                     </div>
                                 </div>
                             </div>
