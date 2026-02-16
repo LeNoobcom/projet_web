@@ -40,9 +40,9 @@
         <div id="navbar-container" class="container  text-center">
             <div class="d-flex gap-3 justify-content-center align-items-center flex-wrap">
                 <div class="input-group" style="max-width: 500px;">
-                    <input type="text" class="form-control" placeholder="Rechercher un film, une série ou un jeu...">
+                    <input type="text" class="form-control bg-white shadow" placeholder="Rechercher un film, une série ou un jeu...">
                     <!-- A changer pour php recherche BD SQL -->
-                    <a href="html/search.html"  class="btn btn-danger btn-signup">Rechercher</a>
+                    <a href="html/search.html"  class="btn btn-danger btn-signup shadow">Rechercher</a>
                 </div>
                 <a href="html/ajout.php" id="add" class="btn btn-outline-danger">+ Ajouter</a>
             </div>
@@ -59,7 +59,7 @@
                     <!-- Contenu généré par PHP -->
                      <?php foreach ($recemment as $film): ?>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <div class="card movie-card h-100 shadow">
+                            <div class="card movie-card h-100 shadow"><a href="html/detail.php?id=<?= $film['id'] ?>" class="stretched-link"></a>
                                 <img src="<?= '../css/images/' . $film['img'] ?>" class="card-img-top" alt="<?= $film['titre'] ?>">
                                 
                                 <div class="card-body d-flex flex-column justify-content-center">
@@ -67,7 +67,7 @@
                                         <?= $film['titre'] ?>
                                     </h5>
                                     <div class="text-center mt-2">
-                                        <span class="badge bg-warning text-dark">★  <?= "A revoir" ?></span>
+                                        <span class="badge bg-warning text-dark">★  <?= $film['note_moyenne'] ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -84,14 +84,14 @@
                     <?php foreach ($populaires as $film): ?>
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="card movie-card h-100 shadow">
-                                <img src="<?= $film['img'] ?>" class="card-img-top" alt="<?= $film['titre'] ?>">
+                                <img src="<?= '../css/images/' . $film['img'] ?>" class="card-img-top" alt="<?= $film['titre'] ?>">
                                 
                                 <div class="card-body d-flex flex-column justify-content-center">
                                     <h5 class="card-title text-center m-0 fw-bold">
                                         <?= $film['titre'] ?>
                                     </h5>
                                     <div class="text-center mt-2">
-                                        <span class="badge bg-warning text-dark">★ <?= $film['note'] ?></span>
+                                        <span class="badge bg-warning text-dark">★ <?= $film['note_moyenne'] ?></span>
                                     </div>
                                 </div>
                             </div>

@@ -30,7 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Renommer l'image en y ajoutant le nom de base et la date et l'heure
     $file_extension = pathinfo($_FILES["affiche"]["name"], PATHINFO_EXTENSION);
-    $new_image_name = $file_basename . '_' . date("Ymd_His") . '.' . $file_extension;
+    if ($file_basename != "") {
+            $new_image_name = $file_basename . '_' . date("Ymd_His") . '.' . $file_extension;
+    }
+    else {
+            $new_image_name = "noposter.jpg";
+    }
 
 
 
