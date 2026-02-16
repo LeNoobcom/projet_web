@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db:3306
--- Généré le : dim. 15 fév. 2026 à 16:07
+-- Généré le : lun. 16 fév. 2026 à 16:09
 -- Version du serveur : 9.5.0
 -- Version de PHP : 8.3.26
 
@@ -34,7 +34,7 @@ CREATE TABLE `media` (
   `date_sortie` date NOT NULL,
   `createur` varchar(30) DEFAULT NULL,
   `genre` varchar(20) NOT NULL,
-  `img` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'noposter.jpg',
+  `img` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `description` longtext,
   `dateajout` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -44,7 +44,9 @@ CREATE TABLE `media` (
 --
 
 INSERT INTO `media` (`id`, `type`, `titre`, `date_sortie`, `createur`, `genre`, `img`, `description`, `dateajout`) VALUES
-(5, 'Film', 'Spider-Man: Far From Home', '2019-07-03', 'Jon Watts', 'Action', 'spiderman_20260215_155531.png', '', '2026-02-15 15:55:31');
+(5, 'Film', 'Spider-Man: Far From Home', '2019-07-03', 'Jon Watts', 'Action', 'spiderman_20260215_155531.png', '', '2026-02-15 15:55:31'),
+(9, 'Serie', 'Arcane', '2021-11-06', 'Netflix', 'Science-Fiction', 'noposter.jpg', 'Leagues of Legends Lore', '2026-02-16 13:47:51'),
+(10, 'Serie', 'test', '2026-01-26', '', 'Comedie', 'noposter.jpg', '', '2026-02-16 14:52:01');
 
 -- --------------------------------------------------------
 
@@ -77,7 +79,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`) VALUES
-(1, 'Senyu', 'y.bahammou05@gmail.com', 'Test');
+(1, 'Senyu', 'y.bahammou05@gmail.com', 'Test'),
+(2, 'test', 'o@test.com', 'uoi');
 
 --
 -- Index pour les tables déchargées
@@ -112,13 +115,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Contraintes pour les tables déchargées
