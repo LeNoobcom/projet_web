@@ -43,6 +43,21 @@
     z-index: 1;
 }
 
+.window_on{
+    width:100vw;
+    height:900px;
+    overflow:scroll;
+    z-index:1;
+}
+
+.window_hidden{
+    height:0px;
+    overflow:hidden;
+}
+
+.cgu_class:hover{
+    cursor: pointer;
+}
 .star {
   width: 300px;  
   aspect-ratio: 1;

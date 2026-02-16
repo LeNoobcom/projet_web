@@ -92,7 +92,7 @@
                                 <div class="form-check mb-4 px-1 ms-3">
                                     <input class="form-check-input bg-dark border-secondary" type="checkbox" id="agreeTerms" name="terms" required>
                                     <label class="form-check-label small text-white-50" for="agreeTerms">
-                                        J'accepte les <a href="#" class="text-danger text-decoration-none">conditions d'utilisation</a>
+                                        J'accepte les <a class="text-danger text-decoration-none cgu_class">conditions d'utilisation</a>
                                     </label>
                                 </div>
 
@@ -118,7 +118,83 @@
             </div>
         </div>
     </main>
+    <div id="cgu" class="window_hidden" style="display:flex; position:fixed; background-color:transparent;justify-content:center;align-items:center">
+        <div style="max-width: 700px; display:flex; flex-direction:column; background: linear-gradient(to bottom right, #3a6073, #16222a); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1);"class="cgu_window_on">
+            <section class="cgu-section">
+                <h2 style="margin-bottom: 10px;">📜 Conditions Générales d'Utilisation (CGU) – RateIt</h2>
+                <div style="margin-bottom: 25px; font-style: italic;">Dernière mise à jour : 16 février 2026</div>
 
+                <p style="margin-bottom: 30px;">
+                    Bienvenue sur <strong>RateIt</strong>, l’espace où votre avis a plus de poids qu'un script de blockbuster. 
+                    En utilisant notre site, vous acceptez sans réserve les présentes conditions. Si vous n'êtes pas d'accord, 
+                    vous pouvez toujours retourner lire le résumé au dos des DVD.
+                </p>
+
+                <div style="margin-bottom: 30px;">
+                    <h3>1. Objet du Service</h3>
+                    <p>RateIt est une plateforme communautaire permettant aux utilisateurs de :</p>
+                    <ul style="line-height: 1.6;">
+                        <li>Consulter des fiches de films, séries et jeux vidéo.</li>
+                        <li>Attribuer des notes et rédiger des critiques.</li>
+                        <li>Partager leur passion (ou leur déception) avec d'autres membres.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <h3>2. Inscription et Compte Utilisateur</h3>
+                    <p>Pour noter et commenter, la création d’un compte est obligatoire.</p>
+                    <ul style="line-height: 1.6;">
+                        <li><strong>Identifiants :</strong> Vous êtes responsable de la confidentialité de votre mot de passe. Si votre chat commande accidentellement 40 Blu-ray via un lien partenaire car vous avez laissé votre session ouverte, nous ne sommes pas responsables.</li>
+                        <li><strong>Âge :</strong> L'utilisation du site est réservée aux personnes de 13 ans et plus.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <h3>3. Code de Conduite et Modération</h3>
+                    <p>La liberté d'expression est reine, mais la courtoisie est la loi.</p>
+                    <ul style="line-height: 1.6;">
+                        <li><strong>Respect :</strong> Les insultes, propos haineux ou discriminatoires envers les œuvres ou les autres membres sont proscrits.</li>
+                        <li><strong>Spoilers :</strong> Il est strictement obligatoire d'utiliser la balise [SPOILER] pour toute révélation majeure. Toute personne révélant la fin d'un jeu ou d'un film sans prévenir risque un bannissement immédiat (et une malédiction sur sept générations).</li>
+                        <li><strong>Contenu :</strong> Vous restez propriétaire de vos écrits, mais vous concédez à RateIt le droit de les diffuser sur la plateforme.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <h3>4. Propriété Intellectuelle</h3>
+                    <ul style="line-height: 1.6;">
+                        <li><strong>Le Site :</strong> Le design, le logo et l'interface de RateIt nous appartiennent. Pas touche.</li>
+                        <li><strong>Contenu tiers :</strong> Les affiches de films, jaquettes de jeux et bandes-annonces sont la propriété de leurs studios respectifs et sont utilisées ici à des fins d'illustration et de critique.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <h3>5. Responsabilité et "Mauvais Goût"</h3>
+                    <ul style="line-height: 1.6;">
+                        <li><strong>Objectivité :</strong> RateIt ne peut être tenu responsable si vous regardez un film noté 5 étoiles et que vous le trouvez détestable. Le goût est subjectif, la déception fait partie de la vie.</li>
+                        <li><strong>Disponibilité :</strong> Nous faisons de notre mieux pour que le site soit en ligne 24h/24, mais nous ne sommes pas à l'abri d'un bug technique ou d'une invasion de zombies serveurs.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <h3>6. Protection des Données (RGPD)</h3>
+                    <p>Nous collectons le strict minimum pour faire fonctionner votre profil :</p>
+                    <ul style="line-height: 1.6;">
+                        <li>Vos données ne seront jamais vendues à des sociétés de production pour vous forcer à regarder des remakes inutiles.</li>
+                        <li>Consultez notre Politique de Confidentialité pour en savoir plus.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <h3>7. Modifications des conditions</h3>
+                    <p>
+                        Nous nous réservons le droit de modifier ces CGU à tout moment. Si vous continuez à utiliser le site 
+                        après une modification, c'est que vous êtes d'accord (ou que vous ne lisez pas les petites lignes, 
+                        comme tout le monde).
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-4 mt-auto">
         <p>&copy; 2026 RateIt. Tous droits réservés.</p>
@@ -126,7 +202,7 @@
     </footer>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/script.js"></script>
+    <script src="../js/afficher_cgu.js"></script>
 </body>
 
 </html>

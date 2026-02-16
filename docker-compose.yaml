@@ -19,7 +19,6 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
     volumes:
       - ./db:/docker-entrypoint-initdb.d
-      #- ./mysql_data:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
