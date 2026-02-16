@@ -1,5 +1,13 @@
 <?php
     session_start(); 
+    if (isset($_SESSION['username'])){
+        echo'';
+    }
+    else{
+        $_SESSION['erreur'] = "Veuillez vous connecter";
+        header('Location: login.php'); 
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -22,7 +30,6 @@
             <a href="../index.php" class="navbar-brand mb-0 h1 text-danger fw-bold">RateIt</a>
         </div>
     </header>
-
     <!-- Contenu principal -->
     <main class="py-5 d-flex align-items-center justify-content-center flex-grow-1" style="margin-top:2em">
         <div class="container">
@@ -46,9 +53,9 @@
                                     <select class="form-select text-white border-secondary" id="TypeObjet" name="type" required
                                         style="background-color: rgba(0,0,0,0.4);">
                                         <option value="" disabled selected hidden>Film/Série/Jeu...</option>
-                                        <option value="Film">Film</option>
-                                        <option value="Serie">Série</option>
-                                        <option value="Jeu">Jeu</option>
+                                        <option value="Film" id="film_selected">Film</option>
+                                        <option value="Serie" id="serie_selected">Série</option>
+                                        <option value="Jeu" id="jeu_selected">Jeu</option>
                                     </select>
                                     <label for="TypeObjet" class="text-white-50">Type *</label>
                                 </div>
@@ -75,15 +82,25 @@
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <select class="form-select text-white border-secondary" id="genre" name="genre" required
+                                    <select class="form-select text-white border-secondary gender_form" id="genre" name="genre" required
                                         style="background-color: rgba(0,0,0,0.4);">
                                         <option value="" disabled selected hidden>Choisir un genre...</option>
                                         <option value="Action">Action</option>
-                                        <option value="Drame">Drame</option>
+                                        <option value="Aventure">Aventure</option>
                                         <option value="Comedie">Comédie</option>
+                                        <option value="Drame">Drame</option>
                                         <option value="Horreur">Horreur</option>
                                         <option value="Science-Fiction">Science-Fiction</option>
-                                        <option value="Aventure">Aventure</option>
+                                        <option value="Fantastique">Fantastique</option>
+                                        <option value="Thriller">Thriller / Suspense</option>
+                                        <option value="Policier">Policier / Crime</option>
+                                        <option value="Animation">Animation</option>
+                                        <option value="Documentaire">Documentaire</option>
+                                        <option value="Romance">Romance</option>
+                                        <option value="Biopic">Biopic (Film biographique)</option>
+                                        <option value="Guerre">Guerre</option>
+                                        <option value="Western">Western</option>
+                                        <option value="Musical">Comédie Musicale</option>
                                     </select>
                                     <label for="genre" class="text-white-50">Genre *</label>
                                 </div>
@@ -128,7 +145,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/script.js"></script>
+    <script src="../js/traiter_ajout.js"></script>
 </body>
 
 </html>
