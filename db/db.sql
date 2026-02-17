@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db:3306
--- Généré le : lun. 16 fév. 2026 à 16:09
+-- Généré le : mar. 17 fév. 2026 à 13:27
 -- Version du serveur : 9.5.0
 -- Version de PHP : 8.3.26
 
@@ -46,7 +46,8 @@ CREATE TABLE `media` (
 INSERT INTO `media` (`id`, `type`, `titre`, `date_sortie`, `createur`, `genre`, `img`, `description`, `dateajout`) VALUES
 (5, 'Film', 'Spider-Man: Far From Home', '2019-07-03', 'Jon Watts', 'Action', 'spiderman_20260215_155531.png', '', '2026-02-15 15:55:31'),
 (9, 'Serie', 'Arcane', '2021-11-06', 'Netflix', 'Science-Fiction', 'noposter.jpg', 'Leagues of Legends Lore', '2026-02-16 13:47:51'),
-(10, 'Serie', 'test', '2026-01-26', '', 'Comedie', 'noposter.jpg', '', '2026-02-16 14:52:01');
+(10, 'Serie', 'test', '2026-01-26', '', 'Comedie', 'noposter.jpg', '', '2026-02-16 14:52:01'),
+(11, 'Jeu', 'Pokemon', '2009-09-10', 'Bandai', 'Aventure', 'pokemon_20260217_132559.jpg', 'Pokemon attrapez les tous', '2026-02-17 13:25:59');
 
 -- --------------------------------------------------------
 
@@ -55,11 +56,20 @@ INSERT INTO `media` (`id`, `type`, `titre`, `date_sortie`, `createur`, `genre`, 
 --
 
 CREATE TABLE `note` (
+  `idcomment` int NOT NULL,
   `idmedia` int NOT NULL,
   `iduser` int NOT NULL,
   `note` int NOT NULL,
   `commentaire` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `note`
+--
+
+INSERT INTO `note` (`idcomment`, `idmedia`, `iduser`, `note`, `commentaire`) VALUES
+(7, 5, 1, 3, 'tes'),
+(11, 5, 2, 5, 'lidzkhna:kefjb:kaejbf');
 
 -- --------------------------------------------------------
 
@@ -97,6 +107,8 @@ ALTER TABLE `media`
 -- Index pour la table `note`
 --
 ALTER TABLE `note`
+  ADD PRIMARY KEY (`idcomment`),
+  ADD UNIQUE KEY `idmedia` (`idmedia`,`iduser`),
   ADD KEY `cleetrangeremedia` (`idmedia`),
   ADD KEY `cleetrangereuser` (`iduser`);
 
@@ -115,7 +127,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT pour la table `note`
+--
+ALTER TABLE `note`
+  MODIFY `idcomment` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT pour la table `user`
