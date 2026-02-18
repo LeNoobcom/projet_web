@@ -40,7 +40,7 @@
         <div id="navbar-container" class="container  text-center">
             <div class="d-flex gap-3 justify-content-center align-items-center flex-wrap">
                 <div class="input-group" style="max-width: 500px;">
-                    <input type="text" class="form-control bg-white shadow" placeholder="Rechercher un film, une série ou un jeu...">
+                    <input type="text" class="form-control bg-white shadow" id="search_bar" placeholder="Rechercher un film, une série ou un jeu...">
                     <!-- A changer pour php recherche BD SQL -->
                     <a href="html/search.html"  class="btn btn-danger btn-signup shadow">Rechercher</a>
                 </div>
@@ -51,7 +51,7 @@
 
     <!-- Contenu principal -->
     <main class="py-5 flex-grow-1">
-        <div class="container">
+        <div class="container home_menu">
             <!-- Section Récemment ajoutés -->
             <section class="mb-5">
                 <h2 class="mb-4 pb-2 border-bottom border-danger border-3 ">Récemment ajoutés</h2>
@@ -67,7 +67,7 @@
                                         <?= $film['titre'] ?>
                                     </h5>
                                     <div class="text-center mt-2">
-                                        <span class="badge bg-warning text-dark">★  <?= $film['note_moyenne'] ?></span>
+                                        <span class="badge bg-warning text-dark">★  <?= number_format((float) $film['note_moyenne'], 1, '.', ''); ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -91,7 +91,7 @@
                                         <?= $film['titre'] ?>
                                     </h5>
                                     <div class="text-center mt-2">
-                                        <span class="badge bg-warning text-dark">★ <?= $film['note_moyenne'] ?></span>
+                                        <span class="badge bg-warning text-dark">★ <?= number_format((float) $film['note_moyenne'], 1, '.', ''); ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -108,6 +108,9 @@
                 </div>
             </section>
         </div>
+        <div class="container rm_all">
+         
+        </div>
     </main>
 
     <!-- Footer -->
@@ -118,7 +121,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/search_bar.js"></script>
 </body>
 
 </html>

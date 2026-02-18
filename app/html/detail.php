@@ -60,7 +60,7 @@
                     <div class="col-md-3">
                         <h2 class="mb-3 fw-bold">Note moyenne </h2>
                         <div class="progress vertical-progress">
-                            <div class="progress-bar  bg-warning"style="width: <?= $detail['note_moyenne'] * 20 ?>%;" aria-valuenow="<?= $detail['note_moyenne'] ?>" aria-valuemin="0" aria-valuemax="5">★ <?= $detail['note_moyenne'] ?></div>
+                            <div class="progress-bar  bg-warning"style="width: <?= $detail['note_moyenne'] * 20 ?>%;" aria-valuenow="<?= $detail['note_moyenne'] ?>" aria-valuemin="0" aria-valuemax="5">★ <?= number_format((float) $detail['note_moyenne'], 1, '.', ''); ?></div>
                         </div>
                     </div>
                 </form>  
@@ -74,8 +74,8 @@
                                     <?= htmlspecialchars($commentaire['commentaire']) ?>
                                 </div>
 
-                                <div class="text-warning fw-bold">
-                                    <?= (int)$commentaire['note'] ?> ★
+                                <div class="text-warning fw-bold" style="margin-left:1em; text-align:center; font-size:2em;">
+                                    <bold><?= (int)$commentaire['note'] ?> ★</bold>
                                 </div>
                             </div>
                         <?php endforeach; ?>
