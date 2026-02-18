@@ -41,8 +41,6 @@
             <div class="d-flex gap-3 justify-content-center align-items-center flex-wrap">
                 <div class="input-group" style="max-width: 500px;">
                     <input type="text" class="form-control bg-white shadow" id="search_bar" placeholder="Rechercher un film, une série ou un jeu...">
-                    <!-- A changer pour php recherche BD SQL -->
-                    <a href="html/search.html"  class="btn btn-danger btn-signup shadow">Rechercher</a>
                 </div>
                 <a href="html/ajout.php" id="add" class="btn btn-outline-danger">+ Ajouter</a>
             </div>
@@ -83,7 +81,7 @@
                     <!-- Contenu généré par PHP -->
                     <?php foreach ($populaires as $film): ?>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <div class="card movie-card h-100 shadow">
+                            <div class="card movie-card h-100 shadow"><a href="html/detail.php?id=<?= $film['id'] ?>" class="stretched-link"></a>
                                 <img src="<?= '../css/images/' . $film['img'] ?>" class="card-img-top" alt="<?= $film['titre'] ?>">
                                 
                                 <div class="card-body d-flex flex-column justify-content-center">
@@ -97,14 +95,6 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
-                </div>
-            </section>
-
-            <!-- Section Mieux notés -->
-            <section class="mb-5">
-                <h2 class="mb-4 pb-2 border-bottom border-danger border-3">Mieux notés</h2>
-                <div class="row" id="top-rated">
-                    <!-- Contenu généré par PHP -->
                 </div>
             </section>
         </div>

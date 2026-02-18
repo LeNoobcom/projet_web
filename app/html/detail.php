@@ -27,7 +27,7 @@
                         echo '<span style="color: white; margin-right: 10px;">Bonjour, <strong>' . htmlspecialchars($_SESSION['username']) . '</strong></span><a href="../server/traiter_logout.php" class="btn btn-sm btn-outline-light">Déconnexion</a>';
                     }
                     else{   
-                        echo "<a href='html/login.php' class='btn btn-outline-danger btn-login'>Se connecter</a> <a href='html/signup.php' class='btn btn-danger btn-signup'>S'inscrire</a>";
+                        echo "<a href='./login.php' class='btn btn-outline-danger btn-login'>Se connecter</a> <a href='./signup.php' class='btn btn-danger btn-signup'>S'inscrire</a>";
                     }
                 ?>
             </div>
@@ -93,7 +93,6 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/script.js"></script>
 </body>
 
 </html>
