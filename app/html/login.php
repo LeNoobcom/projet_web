@@ -104,7 +104,6 @@
                                             Se souvenir
                                         </label>
                                     </div>
-                                    <a href="#" class="small text-danger text-decoration-none">Mot de passe oublié ?</a>
                                 </div>
 
                                 <button type="submit" class="btn btn-danger btn-lg w-100 fw-bold shadow rounded-3 py-3 mb-3"

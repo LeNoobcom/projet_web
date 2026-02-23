@@ -37,12 +37,18 @@
 
     <!-- Barre de recherche -->
     <section class="bg-white py-4">
-        <div id="navbar-container" class="container  text-center">
-            <div class="d-flex gap-3 justify-content-center align-items-center flex-wrap">
-                <div class="input-group" style="max-width: 500px;">
-                    <input type="text" class="form-control bg-white shadow" id="search_bar" placeholder="Rechercher un film, une série ou un jeu...">
+        <div id="navbar-container" class="container text-center">
+            <div class="d-flex gap-3 justify-content-evenly align-items-center">
+                <select class="form-select text-dark bg-white p-2 w-25" id="Filtre" name="Filtre" >
+                    <option value="Tout" id="tout_filtre" >Tout</option>
+                    <option value="Film" id="film_filtre">Film</option>
+                    <option value="Serie" id="serie_filtre">Série</option>
+                    <option value="Jeu" id="jeu_filtre">Jeu</option>
+                </select>
+                <div class="input-group p-2 flex-grow-1 w-75" >
+                    <input type="text" class="form-control text-dark bg-white shadow" id="search_bar" placeholder="Rechercher un film, une série ou un jeu...">
                 </div>
-                <a href="html/ajout.php" id="add" class="btn btn-outline-danger">+ Ajouter</a>
+                <a href="html/ajout.php" id="add" class="btn btn-outline-danger p-2 w-25">+ Ajouter</a>
             </div>
         </div>
     </section>
@@ -56,7 +62,7 @@
                 <div class="row" id="recently-added">
                     <!-- Contenu généré par PHP -->
                      <?php foreach ($recemment as $film): ?>
-                        <div class="col-12 col-md-6 col-lg-4">
+                        <div class="col-12 col-md-6 col-lg-4" data-type="<?= $film['type'] ?>">
                             <div class="card movie-card h-100 shadow"><a href="html/detail.php?id=<?= $film['id'] ?>" class="stretched-link"></a>
                                 <img src="<?= '../css/images/' . $film['img'] ?>" class="card-img-top" alt="<?= $film['titre'] ?>">
                                 
@@ -80,7 +86,7 @@
                 <div class="row" id="most-popular">
                     <!-- Contenu généré par PHP -->
                     <?php foreach ($populaires as $film): ?>
-                        <div class="col-12 col-md-6 col-lg-4">
+                        <div class="col-12 col-md-6 col-lg-4" data-type="<?= $film['type'] ?>">
                             <div class="card movie-card h-100 shadow"><a href="html/detail.php?id=<?= $film['id'] ?>" class="stretched-link"></a>
                                 <img src="<?= '../css/images/' . $film['img'] ?>" class="card-img-top" alt="<?= $film['titre'] ?>">
                                 
@@ -112,6 +118,7 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/search_bar.js"></script>
+    <script src="js/filtre_index.js"></script>
 </body>
 
 </html>

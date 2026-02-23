@@ -35,7 +35,8 @@ recupererMedias()
         }
 
         const searchText = search_bar.value.toLowerCase().trim();
-        
+        const selectedType = document.getElementById('Filtre').value;
+       
         rm_all.innerHTML = '';
 
         rm_all.innerHTML = `
@@ -49,10 +50,10 @@ recupererMedias()
         let count = 0;
 
         donneesRecues.forEach((elem) => {
-            if (elem['titre'].toLowerCase().includes(searchText)) {
+            if (elem['titre'].toLowerCase().includes(searchText) && (selectedType == 'Tout' || elem['type'] == selectedType)) {
                 count++;
                 grid.innerHTML += `
-                    <div class="col-12 col-md-6 col-lg-4">
+                    <div class="col-12 col-md-6 col-lg-4" data-type="${elem['type']}">
                         <div class="card movie-card h-100 shadow">
                             <a href="html/detail.php?id=${elem['id']}" class="stretched-link"></a>
                             <img src="./css/images/${elem['img']}" class="card-img-top" alt="${elem['titre']}">
@@ -69,7 +70,7 @@ recupererMedias()
         });
 
         if (count === 0) {
-            grid.innerHTML = `<p class="text-muted ms-3">Aucun média trouvé pour "${searchText}"</p>`;
+            grid.innerHTML = `<p class="text-muted ms-3">Aucun média trouvé pour "${searchText}" avec le filtre "${selectedType}" !</p>`;
         }
     });
 });

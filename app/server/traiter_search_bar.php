@@ -13,7 +13,8 @@
     $query = 'SELECT 
     m.id, 
     m.titre, 
-    m.img, 
+    m.img,
+    m.type AS type,
     AVG(n.note) AS moyenne 
     FROM media m
     LEFT JOIN note n ON m.id = n.idmedia 
