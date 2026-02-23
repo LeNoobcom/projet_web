@@ -35,10 +35,9 @@
 
     $query = "INSERT INTO note (idmedia, iduser, note, commentaire) VALUES ($id, $iduser, $rating, '$commentaire')";
     $result = mysqli_query($bdd, $query);
-    //redirection
+
     header("Location: ../html/detail.php?id=$id");
 
-    // Fermer la connexion à la base de données
     mysqli_close($bdd);
 
 ?>

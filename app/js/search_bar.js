@@ -6,7 +6,7 @@ let medias = [];
 let notes = [];
 let donneesR;
 
-// Fonction pour récupérer les titres
+
 async function recupererMedias() {
     const response = await fetch('../server/traiter_search_bar.php');
     medias = await response.json();
