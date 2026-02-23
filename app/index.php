@@ -1,0 +1,124 @@
+<?php 
+    session_start();
+    include('./php/populaires.php'); 
+    include('./php/recemment.php');
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RateIt - Notation de films, séries et jeux</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body style="display:flex; flex-direction:column; min-height:100vh;">
+    
+    <!-- En-tête -->
+    <header class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1 text-danger fw-bold"><a href="../index.php" class="navbar-brand mb-0 h1 text-danger fw-bold">RateIt</a></span>
+            <div class="d-flex gap-2 align-items-center">
+                <?php 
+                    if (isset($_SESSION['username'])){
+                        echo '<span style="color: white; margin-right: 10px;">Bonjour, <strong>' . htmlspecialchars($_SESSION['username']) . '</strong></span><a href="./server/traiter_logout.php" class="btn btn-sm btn-outline-light">Déconnexion</a>';
+                    }
+                    else{
+                        echo "<a href='html/login.php' class='btn btn-outline-danger btn-login'>Se connecter</a> <a href='html/signup.php' class='btn btn-danger btn-signup'>S'inscrire</a>";
+                    }
+                ?>
+            </div>
+        </div>
+    </header>
+
+    <!-- Barre de recherche -->
+    <section class="bg-white py-4">
+        <div id="navbar-container" class="container text-center">
+            <div class="d-flex gap-3 justify-content-evenly align-items-center">
+                <select class="form-select text-dark bg-white p-2 w-25" id="Filtre" name="Filtre" >
+                    <option value="Tout" id="tout_filtre" >Tout</option>
+                    <option value="Film" id="film_filtre">Film</option>
+                    <option value="Serie" id="serie_filtre">Série</option>
+                    <option value="Jeu" id="jeu_filtre">Jeu</option>
+                </select>
+                <div class="input-group p-2 flex-grow-1 w-75" >
+                    <input type="text" class="form-control text-dark bg-white shadow" id="search_bar" placeholder="Rechercher un film, une série ou un jeu...">
+                </div>
+                <a href="html/ajout.php" id="add" class="btn btn-outline-danger p-2 w-25">+ Ajouter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenu principal -->
+    <main class="py-5 flex-grow-1">
+        <div class="container home_menu">
+            <!-- Section Récemment ajoutés -->
+            <section class="mb-5">
+                <h2 class="mb-4 pb-2 border-bottom border-danger border-3 ">Récemment ajoutés</h2>
+                <div class="row" id="recently-added">
+                    <!-- Contenu généré par PHP -->
+                     <?php foreach ($recemment as $film): ?>
+                        <div class="col-12 col-md-6 col-lg-4" data-type="<?= $film['type'] ?>" data-id="<?= $film['id'] ?>">
+                            <div class="card movie-card h-100 shadow"><a href="html/detail.php?id=<?= $film['id'] ?>" class="stretched-link"></a>
+                                <img src="<?= '../css/images/' . $film['img'] ?>" class="card-img-top" alt="<?= $film['titre'] ?>">
+                                
+                                <div class="card-body d-flex flex-column justify-content-center">
+                                    <h5 class="card-title text-center m-0 fw-bold">
+                                        <?= $film['titre'] ?>
+                                    </h5>
+                                    <div class="text-center mt-2">
+                                        <span class="badge bg-warning text-dark">★  <?= number_format((float) $film['note_moyenne'], 1, '.', ''); ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </section>
+
+            <!-- Section Les plus populaires -->
+            <section class="mb-5">
+                <h2 class="mb-4 pb-2 border-bottom border-danger border-3">Les plus populaires</h2>
+                <div class="row" id="most-popular">
+                    <!-- Contenu généré par PHP -->
+                    <?php foreach ($populaires as $film): ?>
+                        <div class="col-12 col-md-6 col-lg-4" data-type="<?= $film['type'] ?>" data-note="<?= $film['note_moyenne'] ?>">
+                            <div class="card movie-card h-100 shadow"><a href="html/detail.php?id=<?= $film['id'] ?>" class="stretched-link"></a>
+                                <img src="<?= '../css/images/' . $film['img'] ?>" class="card-img-top" alt="<?= $film['titre'] ?>">
+                                
+                                <div class="card-body d-flex flex-column justify-content-center">
+                                    <h5 class="card-title text-center m-0 fw-bold">
+                                        <?= $film['titre'] ?>
+                                    </h5>
+                                    <div class="text-center mt-2">
+                                        <span class="badge bg-warning text-dark">★ <?= number_format((float) $film['note_moyenne'], 1, '.', ''); ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </section>
+        </div>
+        <div class="container rm_all">
+         
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-auto">
+        <p>&copy; 2026 RateIt. Tous droits réservés.</p>
+        <p>Notez vos films, séries et jeux favoris</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/search_bar.js"></script>
+    <script src="js/filtre_index.js"></script>
+</body>
+
+</html>

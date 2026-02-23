@@ -1,0 +1,42 @@
+const filtre = document.getElementById('Filtre');
+
+function applyFilter() {
+    const selectedType = filtre.value;
+    console.log('Application du filtre:', selectedType);
+
+
+    const sections = [
+        { id: 'recently-added', sortKey: 'data-id', sortFn: (a, b) => parseInt(b.getAttribute('data-id')) - parseInt(a.getAttribute('data-id')) },
+        { id: 'most-popular', sortKey: 'data-note', sortFn: (a, b) => parseFloat(b.getAttribute('data-note')) - parseFloat(a.getAttribute('data-note')) }
+    ];
+
+    sections.forEach(section => {
+        const sectionElement = document.getElementById(section.id);
+        const cards = Array.from(sectionElement.querySelectorAll('.col-12.col-md-6.col-lg-4'));
+
+        let filteredCards = cards;
+        if (selectedType !== 'Tout') {
+            filteredCards = cards.filter(card => card.getAttribute('data-type') === selectedType);
+        }
+
+        filteredCards.sort(section.sortFn);
+
+
+        cards.forEach(card => card.classList.add('d-none'));
+
+
+        filteredCards.slice(0, 3).forEach(card => card.classList.remove('d-none'));
+    });
+}
+
+filtre.addEventListener('change', function() {
+    if (document.querySelector('.rm_all').classList.contains('d-block')) {
+        console.log('Mode recherche actif, relance de la recherche');
+        document.getElementById('search_bar').dispatchEvent(new Event('input'));
+    } else {
+        applyFilter();
+    }
+});
+
+
+applyFilter();

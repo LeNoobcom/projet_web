@@ -1,0 +1,151 @@
+<?php
+    session_start(); 
+    if (isset($_SESSION['username'])){
+        echo'';
+    }
+    else{
+        $_SESSION['erreur'] = "Veuillez vous connecter";
+        header('Location: login.php'); 
+        exit();
+    }
+?>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un élément - RateIt</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+
+</head>
+
+<body class="add-bg page-overlay page-centered" style="display: flex; flex-direction: column; min-height: 100vh;">
+
+    <!-- En-tête -->
+    <header class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container-fluid">
+            <a href="../index.php" class="navbar-brand mb-0 h1 text-danger fw-bold">RateIt</a>
+        </div>
+    </header>
+    <!-- Contenu principal -->
+    <main class="py-5 d-flex align-items-center justify-content-center flex-grow-1" style="margin-top:2em">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+                    
+                    <div class="card border-0 shadow-lg rounded-4 overflow-hidden" 
+                        style="background: linear-gradient(to bottom right, #3a6073, #16222a); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1) !important;">
+                        
+                        <div class="card-body p-4 p-sm-5 text-white">
+                            <div class="text-center mb-4">
+                                <h2 class="fw-bold text-danger italic" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                                    AJOUTER <span class="text-white">UN ÉLÉMENT</span>
+                                </h2>
+                                <p class="text-white-50 small">Enrichissez la base de données RateIt</p>
+                            </div>
+
+                            <form method="POST" action="../server/traiter_ajout.php" enctype="multipart/form-data">
+                                
+                                <div class="form-floating mb-3">
+                                    <select class="form-select text-white border-secondary" id="TypeObjet" name="type" required
+                                        style="background-color: rgba(0,0,0,0.4);">
+                                        <option value="" disabled selected hidden>Film/Série/Jeu...</option>
+                                        <option value="Film" id="film_selected">Film</option>
+                                        <option value="Serie" id="serie_selected">Série</option>
+                                        <option value="Jeu" id="jeu_selected">Jeu</option>
+                                    </select>
+                                    <label for="TypeObjet" class="text-white-50">Type *</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control text-white border-secondary" id="titre" name="titre" 
+                                        style="background-color: rgba(0,0,0,0.4);"
+                                        placeholder="Ex: Inception" required>
+                                    <label for="titre" class="text-white-50">Titre *</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="date" class="form-control text-white border-secondary" id="dateSortie" name="date_sortie" 
+                                        style="background-color: rgba(0,0,0,0.4);"
+                                        required>
+                                    <label for="dateSortie" class="text-white-50">Date de sortie *</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control text-white border-secondary" id="createur" name="createur" 
+                                        style="background-color: rgba(0,0,0,0.4);"
+                                        placeholder="Ex: Christopher Nolan">
+                                    <label for="createur" class="text-white-50">Réalisateur / Créateur</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <select class="form-select text-white border-secondary gender_form" id="genre" name="genre" required
+                                        style="background-color: rgba(0,0,0,0.4);">
+                                        <option value="" disabled selected hidden>Choisir un genre...</option>
+                                        <option value="Action">Action</option>
+                                        <option value="Aventure">Aventure</option>
+                                        <option value="Comedie">Comédie</option>
+                                        <option value="Drame">Drame</option>
+                                        <option value="Horreur">Horreur</option>
+                                        <option value="Science-Fiction">Science-Fiction</option>
+                                        <option value="Fantastique">Fantastique</option>
+                                        <option value="Thriller">Thriller / Suspense</option>
+                                        <option value="Policier">Policier / Crime</option>
+                                        <option value="Animation">Animation</option>
+                                        <option value="Documentaire">Documentaire</option>
+                                        <option value="Romance">Romance</option>
+                                        <option value="Biopic">Biopic (Film biographique)</option>
+                                        <option value="Guerre">Guerre</option>
+                                        <option value="Western">Western</option>
+                                        <option value="Musical">Comédie Musicale</option>
+                                    </select>
+                                    <label for="genre" class="text-white-50">Genre *</label>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="description" class="form-label text-white-50">Description / Synopsis</label>
+                                    <textarea class="form-control text-white border-secondary" id="description" name="description" rows="3"
+                                        style="background-color: rgba(0,0,0,0.4);"
+                                        placeholder="Décrivez l'élément..."></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="affiche" class="form-label text-white-50">Affiche / Image de couverture</label>
+                                    <input type="file" class="form-control text-white border-secondary" id="affiche" name="affiche" 
+                                        style="background-color: rgba(0,0,0,0.4);"
+                                        accept="image/*">
+                                </div>
+
+                                <button type="submit" class="btn btn-danger btn-lg w-100 fw-bold shadow rounded-3 py-3 mb-3"
+                                        style="background: linear-gradient(45deg, #e50914, #b20710); border:none;">
+                                    AJOUTER L'ÉLÉMENT
+                                </button>
+                            </form>
+
+                            <div class="text-center mt-4">
+                                <a href="../index.php" class="text-white-50 text-decoration-none small">
+                                    ← Retour à la galerie
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-auto">
+        <p>&copy; 2026 RateIt. Tous droits réservés.</p>
+        <p>Notez vos films, séries et jeux favoris</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/traiter_ajout.js" defer></script>
+</body>
+
+</html>
