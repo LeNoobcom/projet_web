@@ -33,3 +33,38 @@ Le projet utilise Docker Compose pour orchestrer le serveur web (Apache/PHP), la
 3. Lancez les conteneurs en arrière-plan avec la commande suivante :
    ```bash
    docker-compose up -d
+
+### Structure
+
+.
+├── docker-compose.yaml       # Configuration de l'environnement (PHP/MySQL)
+├── README.md                 # Documentation du projet
+├── db/
+│   └── db.sql                # Schéma de la base de données et INSERTS
+└── app/
+    ├── index.php             # Page d'accueil (Portail principal)
+    ├── css/
+    │   └── styles.css        # Feuilles de style globales
+    ├── images/               # Posters et assets visuels
+    │   └── [imgs].jpg     # Images des médias (Spider-man, Zelda, etc.)
+    ├── html/                 # Pages de l'interface utilisateur
+    │   ├── ajout.php         # Formulaire d'ajout de média
+    │   ├── detail.php        # Page de détails d'un média + avis
+    │   ├── login.php         # Page de connexion
+    │   └── signup.php        # Page d'inscription
+    ├── js/                   # Scripts JavaScript (côté client)
+    │   ├── afficher_cgu.js   # Gestion des conditions d'utilisation
+    │   ├── search_bar.js     # Logique de la barre de recherche
+    │   └── traiter_ajout.js  # Validation dynamique du formulaire d'ajout
+    ├── php/                  # Composants d'affichage dynamiques
+    │   ├── populaires.php    # Section des médias les mieux notés
+    │   └── recemment.php     # Section des derniers ajouts
+    └── server/               # Logique Backend (Traitement des données)
+        ├── traiter_ajout.php # Insertion en BDD des nouveaux médias
+        ├── traiter_detail.php# Récupération des infos et notes
+        ├── traiter_login.php # Vérification des identifiants
+        ├── traiter_logout.php# Gestion de la déconnexion
+        ├── traiter_note.php  # Enregistrement des avis utilisateurs
+        ├── traiter_search.php# Requêtes SQL pour la recherche
+        └── traiter_signup.php# Création de compte utilisateur
+        
