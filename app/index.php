@@ -62,7 +62,7 @@
                 <div class="row" id="recently-added">
                     <!-- Contenu généré par PHP -->
                      <?php foreach ($recemment as $film): ?>
-                        <div class="col-12 col-md-6 col-lg-4" data-type="<?= $film['type'] ?>">
+                        <div class="col-12 col-md-6 col-lg-4" data-type="<?= $film['type'] ?>" data-id="<?= $film['id'] ?>">
                             <div class="card movie-card h-100 shadow"><a href="html/detail.php?id=<?= $film['id'] ?>" class="stretched-link"></a>
                                 <img src="<?= '../css/images/' . $film['img'] ?>" class="card-img-top" alt="<?= $film['titre'] ?>">
                                 
@@ -86,7 +86,7 @@
                 <div class="row" id="most-popular">
                     <!-- Contenu généré par PHP -->
                     <?php foreach ($populaires as $film): ?>
-                        <div class="col-12 col-md-6 col-lg-4" data-type="<?= $film['type'] ?>">
+                        <div class="col-12 col-md-6 col-lg-4" data-type="<?= $film['type'] ?>" data-note="<?= $film['note_moyenne'] ?>">
                             <div class="card movie-card h-100 shadow"><a href="html/detail.php?id=<?= $film['id'] ?>" class="stretched-link"></a>
                                 <img src="<?= '../css/images/' . $film['img'] ?>" class="card-img-top" alt="<?= $film['titre'] ?>">
                                 

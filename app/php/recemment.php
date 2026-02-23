@@ -12,7 +12,7 @@
         die('Echec de connexion : ' . mysqli_connect_error());
     } 
 
-    $query = "SELECT m.titre AS titre,m.type AS type, m.img AS img, m.id, AVG(n.note) AS note_moyenne FROM media m LEFT JOIN note n ON m.id = n.idmedia GROUP BY m.id ORDER BY m.id DESC LIMIT 3;";
+    $query = "SELECT m.titre AS titre,m.type AS type, m.img AS img, m.id, AVG(n.note) AS note_moyenne FROM media m LEFT JOIN note n ON m.id = n.idmedia GROUP BY m.id ORDER BY m.id DESC;";
     $result = mysqli_query($bdd, $query);
     $recemment = [];
 
