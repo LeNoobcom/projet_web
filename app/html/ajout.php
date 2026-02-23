@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="auth-bg page-overlay page-centered" style="display: flex; flex-direction: column; min-height: 100vh;">
+<body class="add-bg page-overlay page-centered" style="display: flex; flex-direction: column; min-height: 100vh;">
 
     <!-- En-tête -->
     <header class="navbar navbar-dark bg-dark shadow-sm">

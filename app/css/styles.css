@@ -12,6 +12,14 @@
     background-attachment: fixed;
     color: #fff;
 }
+.add-bg {
+    background-image: url('images/ajout_bg.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+}
 
 /* Overlay pour les pages avec fond */
 .page-overlay::before {
